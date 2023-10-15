@@ -1,0 +1,18 @@
+<p>q1-user-form works!</p>
+<form >
+    <label for="name">Name : </label>
+    <input type="text" id="name" [(ngModel)]="userData.uname" required> <br><br>
+    
+    <label for="email">Email : </label>
+    <input type="email" id="email" [(ngModel)]="userData.email" required> <br><br>
+  
+    <label for="birthdate">Birthdate : </label>
+    <input type="date" id="birthdate" [(ngModel)]="userData.uname" required><br><br>
+  
+    <button type="submit">Submit</button>
+  </form>
+
+  <div *ngIf="userData">
+   
+    </div>
+  

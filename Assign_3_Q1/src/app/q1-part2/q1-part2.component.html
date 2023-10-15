@@ -1,0 +1,43 @@
+<p>Question 1 : part 2</p>
+
+<li *ngFor="let i of NumArray">
+    {{i}}
+</li>
+<br>
+<li *ngFor="let i of stringArray">
+    {{i}}
+</li>
+<br>
+<!-- <li *ngFor="let i of studArray">
+    {{i['Name']}}
+</li> -->
+<ul>
+    <li *ngFor="let student of studArray">
+        {{ student | json }}
+    </li>
+</ul>
+
+<br>
+select student :
+<select name="student">
+    <option value="">--select student--</option>
+    <option *ngFor="let i of studArray" value="{{i['rollno']}}">{{i['Name']}}</option>
+</select>
+
+<br><br>
+
+select values :
+<select name="student" [(ngModel)]="selectedValue">
+    <option value="">--select value--</option>
+    <option value="textbox">textbox</option>
+    <option value="textarea">textarea</option>
+</select>
+<br>
+<div *ngIf="selectedValue === 'textbox'">
+    TextBox :
+    <input type="text">
+</div>
+<div *ngIf="selectedValue === 'textarea'">
+    TextArea :
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+</div>
