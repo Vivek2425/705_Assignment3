@@ -5,20 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Ques1Component } from './ques1/ques1.component';
 import { Q1Part2Component } from './q1-part2/q1-part2.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Q1UserFormComponent } from './q1-user-form/q1-user-form.component';
+import { FormCrudComponent } from './form-crud/form-crud.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Ques1Component,
     Q1Part2Component,
-    Q1UserFormComponent
+    Q1UserFormComponent,
+    FormCrudComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,18 +1,69 @@
 <p>q1-user-form works!</p>
-<form >
-    <label for="name">Name : </label>
-    <input type="text" id="name" [(ngModel)]="userData.uname" required> <br><br>
-    
-    <label for="email">Email : </label>
-    <input type="email" id="email" [(ngModel)]="userData.email" required> <br><br>
-  
-    <label for="birthdate">Birthdate : </label>
-    <input type="date" id="birthdate" [(ngModel)]="userData.uname" required><br><br>
-  
-    <button type="submit">Submit</button>
-  </form>
 
-  <div *ngIf="userData">
-   
-    </div>
-  
+<form [formGroup]="userform" (ngSubmit)="onsubmit()">
+  <label for="name">Name : </label>
+  <input type="text" name="uname" formControlName="uname" required> <br><br>
+
+  <label for="email">Email : </label>
+  <input type="email" name="email" formControlName="email" required> <br><br>
+
+  <label for="birthdate">Birthdate : </label>
+  <input type="date" name="dob" formControlName="dob" required><br><br>
+
+  <label for="gender">Gender : </label>
+
+  <input type="radio" name="gender" id="male" formControlName="gender" value="male" required><label
+    for="male">male</label>
+
+
+  <input type="radio" name="gender" id="female" formControlName="gender" value="female" required><label for="female">
+    female </label><br><br>
+  <div formGroupName="hobbies">
+    <label for="hobby">Hobbies : </label>
+    <input type="checkbox" name="sports" id="sports" formControlName="sports" value="sports"><label
+      for="sports">sports</label>
+    <input type="checkbox" name="reading" id="reading" formControlName="reading" value="reading"><label
+      for="reading">reading</label>
+    <input type="checkbox" id="adventure" name="adventure" formControlName="adventure" value="adventure"><label
+      for="adventure">adventure</label><br><br>
+  </div>
+
+  <label for="file">Profile : </label>
+
+  <input type="file" name="profile" id="profile" formControlName="profile" >
+<br><br>
+  <input type="submit" [disabled]="userform.invalid" value="submit">
+</form>
+
+<div *ngIf="showdata === true" class="display-data">
+    <table border="2">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>BirthDate</th>
+        <th>Gender</th>
+        <th>Hobbies</th>
+        <th>Profile</th>
+      </tr>
+      <tbody>
+        <tr>
+          <td>{{userform.value.uname}}</td>
+          <td>{{userform.value.email}}</td>
+          <td>{{userform.value.dob}}</td>
+          <td>{{userform.value.gender}}</td>
+          <td>
+            <li *ngIf="userform.value.hobbies.sports">
+              sports
+            </li>
+            <li *ngIf="userform.value.hobbies.reading">
+              reading
+            </li>
+            <li *ngIf="userform.value.hobbies.adventure">
+              adventure
+            </li>
+          </td>
+          <td>{{userform.value.profile}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
